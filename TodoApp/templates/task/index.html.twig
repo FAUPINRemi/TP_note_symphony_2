@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block body %}
+    <h1>Task List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Creation</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.status ? 'Completed' : 'Pending' }}</td>
+                    <td>{{ task.createdAt ? task.createdAt|date('Y-m-d H:i') : '' }}</td>
+                    <td>
+                        <a href="{{ path('task_modifier', {'id': task.id}) }}">Modifier</a>
+                        <a href="{{ path('task_supprimer', {'id': task.id}) }}">Supprimer</a>
+                        <a href="{{ path('task_complete', {'id': task.id}) }}">Completer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('task_new') }}">Creer une tache</a>
+{% endblock %}

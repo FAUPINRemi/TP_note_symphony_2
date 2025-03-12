@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TodoApp{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TodoApp</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path('task_index') }}">Tasks</a></li>
+                <li><a href="{{ path('task_new') }}">Create Task</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} TodoApp</p>
+    </footer>
+</body>
+</html>

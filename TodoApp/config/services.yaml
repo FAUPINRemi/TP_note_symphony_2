@@ -1,0 +1,7 @@
+services:
+    App\Controller\TaskController:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+            $taskRepository: '@App\Repository\TaskRepository'
+            $formFactory: '@form.factory'
+            $validator: '@validator'
